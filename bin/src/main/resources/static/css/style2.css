@@ -1,0 +1,33 @@
+.navbar {
+    background-color: #00008B; /* Màu nền của thanh điều hướng */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 0; /* Khoảng cách nội dung từ viền trên và dưới */
+     
+}
+  
+  /* Áp dụng CSS cho các liên kết trong thanh điều hướng */
+  .nav-content {
+    text-decoration: none; /* Loại bỏ gạch chân cho liên kết */
+    color: white; /* Màu chữ trắng cho liên kết */
+    margin-right: 20px; /* Khoảng cách giữa các liên kết */
+    font-weight: bold; /* Đậm chữ cho liên kết */
+  }
+  
+  /* Đặt kiểu chữ khi di chuột qua liên kết */
+  .nav-content:hover {
+   border-bottom: solid 0.1px aliceblue;
+   border-radius: 20px;
+  }
+  
+  /* Áp dụng CSS cho các nút bên phải */
+  .btn-outline-light {
+    color: white; /* Màu chữ trắng */
+    border-color: white; /* Màu viền trắng */
+    margin-right: 10px; /* Khoảng cách giữa các nút */
+  }
+  
+  /* Đặt kiểu chữ khi di chuột qua nút */
+  .btn-outline-light:hover {
+    background-color: white; /* Màu nền trắng khi di chuột qua */
+    color: #333; /* Màu chữ đen khi di chuột qua */
+  }

@@ -1,0 +1,90 @@
+<div class="panel panel-default " ng-if="items">
+    <div class="panel-heading">HISTORY LIST</div>
+	<div class="table-container-fluid">
+		<table class="table table-condensed">
+        <thead class="bg-success" style="font-variant: small-caps;">
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Create Date</th>
+                <th>Address</th>
+                <th>To</th>
+                <th>Total</th>
+                <!-- <th>Available?</th> -->
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in pager.items">
+                <td>{{item.id}}</td>
+                <td>{{item.account.username}}</td>
+                <td>{{item.createDate}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.nguoinhan}}</td>
+                <td>{{item.tongtien}}</td>
+                <td>{{item.available?'Yes':'No'}}</td>
+                <td><button ng-click="getDetailData(item)" class="btn btn-primary">
+                    {{item.showDetail ? 'Hide' : 'Show'}}
+                    </button></td>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <a ng-click="edit(item)" href="" class="btn btn-warning">
+                            <b class="glyphicon glyphicon-edit"></b>
+                        </a>
+                        <a ng-click="delete(item)" href="" class="btn btn-danger">
+                            <b class="glyphicon glyphicon-trash"></b>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<div ng-repeat="item in pager.items">		
+		<div class="fixed-top">
+			<table class="table table-condensed detail-table" ng-show="item.showDetail">
+            <thead class="bg-danger" style="color: aliceblue;font-variant: small-caps;">
+                <th>Id</th>
+                <th>Order id</th>
+                <th>size</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </thead>
+            <tbody class="bg-dark" style="color: aliceblue;">
+                <tr ng-repeat="detailItem in item.detailData">
+                    <td>{{detailItem.id}}</td>
+                    <td>{{detailItem.order.id}}</td>
+                    <td>{{detailItem.size}}</td>
+                    <td class="text-truncate">{{detailItem.product.name}}</td>
+                    <td>{{detailItem.price}}</td>
+                    <td>{{detailItem.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+			
+	</div>
+	</div>
+    
+	
+    <div class="panel-footer text-center">
+        <button ng-click="pager.first()" class="btn " style="width: 60px;">
+            <i class="fa-solid fa-backward-step"></i>
+        </button>
+        <button ng-click="pager.prev()" class="btn " style="width: 60px;">
+            <i class="fa-solid fa-backward"></i>
+        </button>
+        <button class="btn btn-success">
+            {{pager.page + 1}} of {{pager.count}}
+        </button>
+        <button ng-click="pager.next()" class="btn " style="width: 60px;">
+            <i class="fa-solid fa-forward"></i>
+        </button>
+        <button ng-click="pager.last()" class="btn" style="width: 60px;">
+            <i class="fa-solid fa-forward-step"></i>
+        </button>
+    </div>
+	
+</div>
