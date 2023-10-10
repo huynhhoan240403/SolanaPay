@@ -65,40 +65,6 @@
 				here</a>
 		</p>
 	</div>
-	<section>
-		<div class="container">
-			<div class="row">
-				<div th:each="product : ${products}" class="col-md-3 col-6 col-sm-3">
-					<div class="wsk-cp-product">
-						<div class="wsk-cp-img">
-							<a th:href="@{|/index.html/${product.id}|}"> <!-- Kiểm tra xem sản phẩm có ảnh không -->
-								<img class="product-image"
-								th:src="@{|/images/${product.image}|}" style="height:260px">
-								<!-- Kiểm tra xem sản phẩm có liên kết với DiscountProduct không -->
-
-							</a>
-							<!-- Hiển thị tên sản phẩm -->
-							<div style="text-align: center; font-size: 40px; top:2px"
-								th:utext="${product.name}"></div>
-
-							<div class="product-price">
-								<h4 th:text="${'$' + product.price}" class="text-center"></h4>
-							</div>
-							<div class="card-footer">
-
-								<a th:attr="ng-click=@{|cart.add(${product.id})|}"
-									class="mt-5 buy-now btn btn-sm w-100 btn-primary"
-									style="color: white" ng-click="saveToLocalStorage()">Add To
-									Cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
 
 	<section id="A2"
 		class="panels theme-background-color-white simple-panels-accordion center"
