@@ -39,14 +39,14 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 
 		// phân quyền sử dụng
 		// demo 1
-//		http.authorizeRequests()
-//		
+		http.authorizeRequests()
+		
 ////		.antMatchers("/history", "/revenue", "/account.html", "/orderDetail", "/productAdmin",
 ////			"/categoryAdmin", "/report").hasAnyRole("DIRE", "STAF")
-//		.antMatchers("/assets/**").hasAnyRole("STAF", "DIRE")
-//		.antMatchers("/check/**").authenticated()
-//		.antMatchers("/rest/authorities", "/rest/revenue").hasRole("DIRE")
-//		.anyRequest().permitAll(); // anonymous
+		.antMatchers("/assets/**").hasAnyRole("ADMI")
+		.antMatchers("/check/**").authenticated()
+		.antMatchers("/rest/authorities", "/rest/revenue").hasRole("ADMI")
+		.anyRequest().permitAll(); // anonymous
 
 		// giao diện đăng nhập
 		http.formLogin().loginPage("/login").loginProcessingUrl("/login/success") // login

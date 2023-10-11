@@ -31,7 +31,6 @@ public class Account implements Serializable{
 		@Id
 	     String username;
 	     String password;
-	    
 	     String email;
 	     String fullname;
 

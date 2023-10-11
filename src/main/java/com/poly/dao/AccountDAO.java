@@ -9,5 +9,9 @@ import com.poly.entity.Account;
 
 
 public interface AccountDAO extends JpaRepository<Account, String> {
+	Account findByUsername(String username);
 	
+
+	@Query("SELECT a FROM Account a WHERE a.email LIKE ?1")
+	Account getAccountByEmail(String email);
 }
