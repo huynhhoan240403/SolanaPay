@@ -11,7 +11,7 @@ app.controller("cart-ctrl", function($scope, $http) {
 		// ... Thêm dữ liệu size giày vào đây
 	];*/
 
-	
+
 	$scope.cart = [];
 
 
@@ -19,21 +19,21 @@ app.controller("cart-ctrl", function($scope, $http) {
 	var $cart = $scope.cart = {
 		items: [],
 		add(id) {
-			
+
 
 			// Lấy giá trị từ biến totalAmount và sử dụng nó khi thêm sản phẩm
-			var item = this.items.find(item => item.id == id );
+			var item = this.items.find(item => item.id == id);
 			if (item) {
 				item.qty++;
 				this.saveToLocalStorage();
 			} else {
 				$http.get(`/rest/products/${id}`).then(resp => {
-						resp.data.qty = 1;
+					resp.data.qty = 1;
 
-						resp.data.sizes = $scope.selectedSize;
-						this.items.push(resp.data);
-						this.saveToLocalStorage();
-					});
+					resp.data.sizes = $scope.selectedSize;
+					this.items.push(resp.data);
+					this.saveToLocalStorage();
+				});
 			}
 		},
 		remove(id) { // xóa sản phẩm khỏi giỏ hàng
@@ -113,4 +113,113 @@ app.controller("cart-ctrl", function($scope, $http) {
 			})
 		}
 	}
+	
+	
+	
+	$scope.requestData = {
+        network: 'devnet',
+        success_url: 'http://localhost:8080/success',
+        cancel_url: 'http://localhost:8080/cancel',
+        tokens: ['dust', 'samo'],
+        items: [
+            {
+                name: 'Product Name 1',
+                price: 0.1,
+                image: 'https://imgur.com/FOFmXwO.png',
+                quantity: 2,
+                size: 'XL'
+            }
+        ],
+        shipping_fees: 0.1,
+        config: {
+            collect_shipping_address: true
+        }
+    };
+
+    $scope.initiateCheckout = function() {
+        $http.post('/api/checkout/session', $scope.requestData)
+            .then(function(response) {
+                var sessionId = response.data.session_id;
+                $scope.generatePaymentURL(sessionId);
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    };
+
+    $scope.generatePaymentURL = function(sessionId) {
+        var apiUrl = 'https://checkout-api.candypay.fun/api/v1/session/payment_url?session_id=' + sessionId;
+        $http.get(apiUrl)
+            .then(function(response) {
+                var paymentUrl = response.data.payment_url;
+                // Redirect đến trang thanh toán
+                window.location.href = paymentUrl;
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    };
+
+
+	/*$scope.initiateCheckout = function() {
+		var requestData = {
+			"network": "devnet",
+			"success_url": "http://localhost:8080/success",
+			"cancel_url": "http://localhost:8080/cancel",
+			"tokens": ["dust", "samo"],
+			"items": [
+				{
+					"name": "Product Name 1",
+					"price": 0.1,
+					"image": "https://imgur.com/FOFmXwO.png",
+					"quantity": 2,
+					"size": "XL"
+				}
+			],
+			"shipping_fees": 0.1,
+			"config": {
+				"collect_shipping_address": true
+			}
+		};*/
+		
+		
+		
+
+		/*$http.post('/api/checkout/session', requestData)
+			.then(function(response) {
+				var session_id = response.data.session_id;
+
+				// Gọi API để lấy payment URL từ session_id
+				$http.get('/api/checkout/session/payment_url?session_id=' + session_id)
+					.then(function(response) {
+						var paymentUrl = response.data.payment_url;
+						// Chuyển hướng người dùng đến trang thanh toán của Candy Pay
+						$window.location.href = paymentUrl;
+					})
+					.catch(function(error) {
+						console.error(error);
+					});
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+	};*/
+
+	/*$http({
+		method: 'POST',
+		url: '/api/checkout/session', // Backend API endpoint
+		data: requestData,
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then(function(response) {
+		var session_id = response.data.session_id;
+		var paymentUrl = 'https://checkout-api.candypay.fun/api/v1/session/payment_url?session_id=' + session_id;
+		$window.location.href = paymentUrl; // Redirect to payment URL
+	}).catch(function(error) {
+		console.error(error);
+	});*/
+
+
+
 })
