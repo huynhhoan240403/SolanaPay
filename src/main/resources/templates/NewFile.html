@@ -52,7 +52,12 @@
 
 			$scope.generatePaymentURL = function (sessionId) {
 				var apiUrl = 'https://checkout-api.candypay.fun/api/v1/session/payment_url?session_id=' + sessionId;
-				$http.get(apiUrl)
+				// Thêm header Authorization vào yêu cầu
+				var headers = {
+					'Authorization': 'Bearer ' + 'cp_public_AYzhvALF_37RQtcqBrrRMak2kwRw9USNv' // Thay yourPublicApiKey bằng giá trị Public API key của bạn
+				};
+
+				$http.get(apiUrl, {headers: headers})
 					.then(function (response) {
 						var paymentUrl = response.data.payment_url;
 						// Redirect đến trang thanh toán
@@ -62,12 +67,6 @@
 						console.error(error);
 					});
 			};
-
-
-
-
-
-
 		})
 
 	</script>
