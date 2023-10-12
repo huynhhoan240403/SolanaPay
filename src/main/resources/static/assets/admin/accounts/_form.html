@@ -1,27 +1,27 @@
 <div class="panel panel-default">
-	<div class="panel-heading">HISTORY EDITION</div>
+	<div class="panel-heading">ACCOUNTS EDITION</div>
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="form-group col-sm-6">
-						<div>Id</div>
-						<input ng-model="form.id" class="form-control" disabled="disabled">
+						<div>UserName</div>
+						<input ng-model="form.username"  name="username" class="form-control">
 					</div>
 					<div class="form-group col-sm-6">
-						<div>Code</div>
-						<input ng-model="form.code" class="form-control">
+						<div>PassWord</div>
+						<input ng-model="form.password" class="form-control">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-sm-6">
-						<div>Discount Amount</div>
-						<input ng-model="form.discountAmount" class="form-control">
+						<div>Email</div>
+						<input ng-model="form.email" class="form-control">
 					</div>
 					<div class="form-group col-sm-6">
-						<div>Expiration Date</div>
-						<input ng-model="form.expirationDate" 
-							class="form-control"  type="date">
+						<div>FullName</div>
+						<input ng-model="form.fullname" 
+							class="form-control"  >
 					</div>
 				</div>
 				
@@ -29,15 +29,15 @@
 		</div>
 	</div>
 	<div class="panel-footer text-center">
-		<button ng-click="create()" ng-disabled="form.id"
+		<button ng-click="create()" ng-disabled="!form.username"
 			class="btn btn-primary">
 			<b class="glyphicon glyphicon-plus"></b> Create
 		</button>
-		<button ng-click="update()" ng-disabled="!form.id"
+		<button ng-click="update()" ng-disabled="!form.username"
 			class="btn btn-success">
 			<b class="glyphicon glyphicon-save"></b> Update
 		</button>
-		<button ng-click="delete(form)" ng-disabled="!form.id"
+		<button ng-click="delete(form)" ng-disabled="!form.username"
 			class="btn btn-danger">
 			<b class="glyphicon glyphicon-trash"></b> Delete
 		</button>

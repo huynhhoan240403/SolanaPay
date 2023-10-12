@@ -28,12 +28,11 @@ app.controller("cart-ctrl", function($scope, $http) {
 				this.saveToLocalStorage();
 			} else {
 				$http.get(`/rest/products/${id}`).then(resp => {
-					resp.data.qty = 1;
-
-					resp.data.sizes = $scope.selectedSize;
-					this.items.push(resp.data);
-					this.saveToLocalStorage();
-				});
+						resp.data.qty = 1;
+						resp.data.sizes = $scope.selectedSize;
+						this.items.push(resp.data);
+						this.saveToLocalStorage();
+					});
 			}
 		},
 		remove(id) { // xóa sản phẩm khỏi giỏ hàng

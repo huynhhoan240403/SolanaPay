@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,15 +35,15 @@ public class Account implements Serializable{
 	     String email;
 	     String fullname;
 
-	    
+	    @JsonIgnore
 	    @OneToMany(mappedBy = "account",fetch = FetchType.EAGER)
 	    private List<Authorities> authorities;
 
-	   
+	    @JsonIgnore
 	    @OneToMany(mappedBy = "account")
 	    private List<BankAccount> bankAccounts;
 
-	   
+	    @JsonIgnore
 	    @OneToMany(mappedBy = "account")
 	    private List<Transaction> transactions;
 
