@@ -152,7 +152,7 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 		var apiUrl = 'https://checkout-api.candypay.fun/api/v1/session/payment_url?session_id=' + sessionId;
 		// Thêm header Authorization vào yêu cầu
 		var headers = {
-			'Authorization': 'Bearer ' + 'cp_public_AYzhvALF_37RQtcqBrrRMak2kwRw9USNv' // Thay yourPublicApiKey bằng giá trị Public API key của bạn
+			'Authorization': 'Bearer ' + 'cp_public_KZBZ7SDC_6UCgMBxn5yFEZULh6cdQXTy6' // Thay yourPublicApiKey bằng giá trị Public API key của bạn
 		};
 
 		$http.get(apiUrl, { headers: headers })

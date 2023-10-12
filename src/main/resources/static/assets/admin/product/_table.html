@@ -8,10 +8,9 @@
 				<th>Price</th>
 		<!-- 		<th>Size</th> -->
 				<th>Image</th>
-				<th>Category</th>
-				<th>DiscountSale</th>
-				<th>Available?</th>
-				<th></th>
+				<th>Quantity</th>
+			
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,12 +20,7 @@
 				<td>{{item.price | number : 2}}</td>
 			<!-- 	<td>{{item.size}}</td> -->
 				<td>{{item.image}}</td>
-				<td>{{item.category.name}}</td>
-				<td>
-    <span ng-if="item.discount_sale.name">{{item.discount_sale.name}}</span>
-    <span ng-if="!item.discount_sale.name">null</span>
-</td>
-				<td>{{item.available?'Yes':'No'}}</td>
+				<td>{{item.quantity}}</td>
 				<td>
 					<div class="btn-group btn-group-xs">
 						<a ng-click="edit(item)" href="" class="btn btn-warning">

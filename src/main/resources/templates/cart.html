@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{/layout/layout.html::dynamic(~{::title}, ~{::body})}">
+	th:replace="~{/layout/layout2.html::dynamic(~{::title}, ~{::body})}">
 <head>
 <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
 <meta charset="utf-8">
@@ -39,7 +39,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="item in cart.items">
-								<td><img src="https://imgur.com/M0l5SDh.png" style="width: 50%">
+								<td><img src="https://imgur.com/M0l5SDh.png" style="width:50%">
 								</td>
 
 
@@ -57,7 +57,7 @@
 								<td>
 									<button ng-click="cart.remove(item.id)"
 										class="btn btn-sm btn-danger">
-										<i class="fas fa-trash"> X</i>
+										<i class="fas fa-trash"> </i>
 									</button>
 								</td>
 
