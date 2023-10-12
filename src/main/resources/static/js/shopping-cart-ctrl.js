@@ -29,7 +29,6 @@ app.controller("cart-ctrl", function($scope, $http) {
 			} else {
 				$http.get(`/rest/products/${id}`).then(resp => {
 						resp.data.qty = 1;
-
 						resp.data.sizes = $scope.selectedSize;
 						this.items.push(resp.data);
 						this.saveToLocalStorage();

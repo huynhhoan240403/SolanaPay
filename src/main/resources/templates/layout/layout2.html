@@ -5,6 +5,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title th:replace="${title}"></title>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -17,8 +19,14 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
 <link rel="stylesheet" href="../../css/style2.css">
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="app" ng-controller="cart-ctrl">
 	<nav class="navbar row">
 
 		<div class="d-flex col-md-7 justify-content-center">
@@ -26,19 +34,22 @@
 				class="nav-content">Send and Request</a> <a href="#"
 				class="nav-content">Wallet</a> <a href="#" class="nav-content">Activity</a>
 			<a href="#" class="nav-content">Help</a>
+				<a href="/products.html" class="nav-content">Products</a>
+			
 		</div>
 
 		<div class="d-flex col-md-5 justify-content-end">
-			<a href="#" class="btn btn-outline-light me-2"><i
+			<a style="text-decoration: none" href="/cart.html" class="site-cart btn btn-outline-light me-2 icon ">
+				<i class="fa-solid fa-cart-shopping"></i>
+				<span class="">{{cart.count}}</span>
+
+			</a> <a href="#" class="btn btn-outline-light me-2"><i
 				class="fa-solid fa-bell"></i></a> <a href="#"
-				class="btn btn-outline-light me-2"><i
-				class="fa-solid fa-gear"></i></a> <a href="/logout"
-				class="btn btn-outline-light me-2">Logout</a>
-				
-				
-		<a class="btn btn-outline-light me-2"
-			th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}"
-			th:href="@{/admin/home/index}">Admin</a>
+				class="btn btn-outline-light me-2"><i class="fa-solid fa-gear"></i></a>
+			<a href="/logout" class="btn btn-outline-light me-2">Logout</a> <a
+				class="btn btn-outline-light me-2"
+				th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}"
+				th:href="@{/admin/home/index}">Admin</a>
 		</div>
 
 
@@ -68,7 +79,7 @@
 						<!-- Grid column -->
 						<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
 							<h6 class="text-white text-uppercase mb-4 font-weight-bold">Products</h6>
-							<p>
+<p>
 								<a class="text-white">Help</a>
 							</p>
 							<p>
@@ -121,5 +132,7 @@
 	</div>
 	<!-- End of .container -->
 	</div>
+	
+	<script th:src="@{/js/shopping-cart-ctrl.js}"></script>
 </body>
 </html>
