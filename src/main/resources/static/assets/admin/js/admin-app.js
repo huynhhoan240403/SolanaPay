@@ -33,9 +33,9 @@ app.config(function($routeProvider) {
 			templateUrl: "/assets/admin/revenue/index.html",
 			controller: "revenue-ctrl"
 		})
-		.when("/discount", {
-			templateUrl: "/assets/admin/discountCode/index.html",
-			controller: "discount-ctrl"
+		.when("/accounts", {
+			templateUrl: "/assets/admin/accounts/index.html",
+			controller: "accounts-ctrl"
 		}).when("/discountsale", {
 			templateUrl: "/assets/admin/discountProduct/index.html",
 			controller: "discountProduct-ctrl"

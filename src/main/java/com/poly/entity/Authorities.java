@@ -21,7 +21,7 @@ import lombok.Data;
 @Entity
 @Table(name = "Authorities")
 public class Authorities implements Serializable {
-	 @Id
+	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	     Integer id; 
 	    @ManyToOne
