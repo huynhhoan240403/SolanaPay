@@ -58,13 +58,12 @@ public class LoadPage {
 		System.out.println(products);
 		return "index";
 	}
-	@RequestMapping({ "/products.html" })
+	@RequestMapping("/products.html")
 	public String findAllProducts(Model model) {
-
 		List<Product> products = proDAO.findAll();
 		model.addAttribute("products", products);
 		System.out.println(products);
-		return "product";
+		return "product.html";
 	}
 
 	@RequestMapping("index2.html")
