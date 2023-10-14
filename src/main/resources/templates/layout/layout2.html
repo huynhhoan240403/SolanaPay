@@ -7,6 +7,15 @@
 <title th:replace="${title}"></title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+	<link rel="stylesheet" href="../../fonts/icomoon/style.css">
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/magnific-popup.css">
+<link rel="stylesheet" href="../../css/jquery-ui.css">
+<link rel="stylesheet" href="../../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../../css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../../css/aos.css">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/login.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -19,8 +28,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
 <link rel="stylesheet" href="../../css/style2.css">
-	<script
-		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script
+	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 
 <script
@@ -33,15 +42,15 @@
 			<a href="#" class="nav-content">Home</a> <a href="#"
 				class="nav-content">Send and Request</a> <a href="#"
 				class="nav-content">Wallet</a> <a href="#" class="nav-content">Activity</a>
-			<a href="#" class="nav-content">Help</a>
-				<a href="/products.html" class="nav-content">Products</a>
-			
+			<a href="#" class="nav-content">Help</a> <a href="/products.html"
+				class="nav-content">Products</a>
+
 		</div>
 
 		<div class="d-flex col-md-5 justify-content-end">
-			<a style="text-decoration: none" href="/cart.html" class="site-cart btn btn-outline-light me-2 icon ">
-				<i class="fa-solid fa-cart-shopping"></i>
-				<span class="">{{cart.count}}</span>
+			<a style="text-decoration: none" href="/cart.html"
+				class="site-cart btn btn-outline-light me-2 icon "> <i
+				class="fa-solid fa-cart-shopping"></i> <span class="">{{cart.count}}</span>
 
 			</a> <a href="#" class="btn btn-outline-light me-2"><i
 				class="fa-solid fa-bell"></i></a> <a href="#"
@@ -78,9 +87,10 @@
 
 						<!-- Grid column -->
 						<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-							<h6 class="text-black text-uppercase mb-4 font-weight-bold">Products</h6>
-<p>
-								<a class="text-black">Help</a>
+							<h6 class="text-white text-uppercase mb-4 font-weight-bold">Products</h6>
+							<p>
+								<a class="text-white">Help</a>
+
 							</p>
 							<p>
 								<a class="text-black">Contact Us</a>
@@ -132,7 +142,7 @@
 	</div>
 	<!-- End of .container -->
 	</div>
-	
+
 	<script th:src="@{/js/shopping-cart-ctrl.js}"></script>
 </body>
 </html>
