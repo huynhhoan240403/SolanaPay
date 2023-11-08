@@ -60,25 +60,6 @@
 						<li class="d-inline-block d-md-none ml-md-0"><a href="#"
 							class="site-menu-toggle js-menu-toggle"><span
 								class="icon-menu"></span></a></li>
-
-
-						<!--<li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}"
-							class="has-children"><a href="/account.html">Admin</a>
-							<ul class="dropdown">
-								<li><a href="/history">History</a></li>
-								<li><a href="/revenue">Doanh thu năm</a></li>
-								<li><a href="/account.html">Account</a></li>
-								<li><a href="/orderDetail">OrderDetail</a></li>
-								<li><a href="/productAdmin">Product</a></li>
-								<li><a href="/categoryAdmin">Category</a></li>
-								<li><a href="/report">Report</a></li>
-							</ul>
-						</li>-->
-
-						<li
-							th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
-							<a th:href="@{/admin/home/index}">Admin</a>
-						</li>
 					</ul>
 				</div>
 			</nav>
