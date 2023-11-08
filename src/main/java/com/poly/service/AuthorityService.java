@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.poly.entity.Authorities;
 
-
 public interface AuthorityService {
 	public List<Authorities> findAll() ;
 
@@ -13,4 +12,5 @@ public interface AuthorityService {
 	public void delete(Integer id) ;
 
 	public List<Authorities> findAuthoritiesOfAdministrators() ;
+
 }

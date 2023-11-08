@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
-			Account account = accDAO.findById(username).get();
+			Account account = accDAO.findByUsernameIgnoreCase(username);
 			// tạo UserDetail từ Account
 			String password = account.getPassword();
 			String[] roles = account.getAuthorities().stream()
