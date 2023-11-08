@@ -1,6 +1,6 @@
 app.controller("authority-ctrl", function($scope, $http, $location){
 	$scope.initialize = function(){
-		// load all roles
+	    // load all roles
 		$http.get("/rest/roles").then(resp => {
 	    	$scope.roles = resp.data;
 	    })
