@@ -16,13 +16,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.poly.service.UploadService;
 
-
 @CrossOrigin("*")
 @RestController
 public class UploadRestController {
 	@Autowired
 	UploadService uploadService;
-	
+
 	@PostMapping("/rest/upload/{folder}")
 	public JsonNode upload(@PathParam("file") MultipartFile file, @PathVariable("folder") String folder) {
 		File savedFile = uploadService.save(file, folder);
