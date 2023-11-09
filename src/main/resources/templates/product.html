@@ -13,7 +13,7 @@ th:replace="~{/layout/layout2.html::dynamic(~{::title}, ~{::body})}">
 				<div th:each="product : ${products}" class="col-md-3 col-6 col-sm-3">
 					<div class="wsk-cp-product">
 						<div class="wsk-cp-img">
-							<a th:href="@{|/index.html/${product.id}|}"> <!-- Kiểm tra xem sản phẩm có ảnh không -->
+							<a href="/products.html"> <!-- Kiểm tra xem sản phẩm có ảnh không -->
 								<img class="product-image"
 								th:src="@{|/images/${product.image}|}" style="height:260px ; width: 100%">
 								<!-- Kiểm tra xem sản phẩm có liên kết với DiscountProduct không -->
