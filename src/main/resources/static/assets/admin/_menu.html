@@ -3,7 +3,7 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 	<!-- Sidebar - Brand -->
-	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index2.html">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -19,40 +19,36 @@
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			<span>Dashboard</span></a>
 	</li>
-
-	<!-- Divider -->
-	<hr class="sidebar-divider d-none d-md-block">
- 
-	<!-- Nav Item - Charts -->
-	<!-- Nav Item - Tables -->
 	<li class="nav-item">
+		 <a class="nav-link" href="#!accounts">
+			 <i class="fas fa-fw fa-table"></i>
+			 <span>Accounts</span></a>
+	 </li>
+	<!-- Nav Item - Tables -->
+	<!-- <li class="nav-item">
 		<a class="nav-link" href="#!history">
 			<i class="fas fa-fw fa-table"></i>
 			<span>history</span></a>
-	</li>
+	</li> -->
 	 <!-- Nav Item - Tables -->
 	 <li class="nav-item" th:if="${#request.isUserInRole('STAF')}">
 		<a class="nav-link" href="#!authorize">
 			<i class="fas fa-fw fa-table"></i>
-			<span>authorize</span></a>
+			<span>Authorize</span></a>
 	</li>
 	 <!-- Nav Item - Tables -->
-	 <li class="nav-item" th:if="${#request.isUserInRole('STAF')}">
+	<!--  <li class="nav-item" th:if="${#request.isUserInRole('STAF')}">
 		<a class="nav-link" href="#!revenue">
 			<i class="fas fa-fw fa-table"></i>
 			<span>revenue</span></a>
 	</li>
-	
+	 -->
 	 <li class="nav-item">
 		 <a class="nav-link" href="#!product">
 			 <i class="fas fa-fw fa-table"></i>
 			 <span>Products</span></a>
 	 </li>
-	 <li class="nav-item">
-		 <a class="nav-link" href="#!accounts">
-			 <i class="fas fa-fw fa-table"></i>
-			 <span>accounts</span></a>
-	 </li>
+	 
 	 <!-- Divider -->
 	
 </ul>

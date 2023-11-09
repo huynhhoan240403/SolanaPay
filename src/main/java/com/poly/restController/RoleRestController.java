@@ -18,6 +18,7 @@ import com.poly.service.RoleService;
 public class RoleRestController {
 	@Autowired
 	RoleService roleService;
+	
 	@GetMapping
 	public List<Role> getAll() {
 		return roleService.findAll();

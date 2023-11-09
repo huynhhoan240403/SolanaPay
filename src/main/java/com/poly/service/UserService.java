@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
-			Account account = accDAO.findById(username).get();
+			Account account = accDAO.findByUsernameIgnoreCase(username);
 			// tạo UserDetail từ Account
 			String password = account.getPassword();
 			String[] roles = account.getAuthorities().stream()
@@ -46,15 +46,4 @@ public class UserService implements UserDetailsService{
 			throw new UsernameNotFoundException(username + "not found");
 		}
 	}
-	
-//	public void loginFromOAuth2(OAuth2AuthenticationToken oauth2){
-//		// String fullname = oauth2.getPrincipal().getAttribute("name");
-//		String email = oauth2.getPrincipal().getAttribute("email");
-//		String password = Long.toHexString(System.currentTimeMillis());
-//		
-//		UserDetails user = User.withUsername(email)
-//				.password(pe.encode(password)).roles("0").build();
-//		Authentication auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-//		SecurityContextHolder.getContext().setAuthentication(auth);
-//	}
 }
