@@ -15,7 +15,7 @@ Trước khi bạn bắt đầu cài đặt, hãy chắc chắn rằng máy tín
 ![image2](https://github.com/huynhhoan240403/SolanaPay/assets/93584462/bb8dcab1-82a9-4b0d-afda-4a5efde47e73)
 
 ## Hướng Dẫn Cài Đặt
-1. Cài file PayPalDB.sql vào SQL Server
+1. Cài file SolanaPay.sql vào SQL Server
 2. Đăng nhập user: nv01 mk: 123 để vào app
 ![image](https://github.com/huynhhoan240403/SolanaPay/assets/93584462/c9db9530-1dd8-49de-8d1d-8fdf013e2873)
 3. Chọn mua sản phẩm 
