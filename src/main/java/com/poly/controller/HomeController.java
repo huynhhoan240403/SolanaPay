@@ -9,4 +9,8 @@ public class HomeController {
 	public String admin() {
 		return "redirect:/assets/admin/index.html";
 	}
+	@RequestMapping("/a")
+	public String adminaa() {
+		return "NewFile";
+	}
 }

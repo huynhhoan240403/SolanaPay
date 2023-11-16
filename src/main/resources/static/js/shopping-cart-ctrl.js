@@ -132,7 +132,7 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 			return {
 				name: item.name,
 				price: $cart.price_product(item),
-				image: 'https://imgur.com/M0l5SDh.png',
+				image: 'https://imgur.com/FOFmXwO.png',
 				quantity: item.qty,
 
 			};
@@ -140,7 +140,6 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 		$http.post('/api/checkout/session', $scope.requestData)
 			.then(function(response) {
 				var sessionId = response.data.session_id;
-				console.log(sessionId);
 				$scope.generatePaymentURL(sessionId);
 			})
 			.catch(function(error) {
@@ -149,11 +148,11 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 	};
 
 	$scope.generatePaymentURL = function(sessionId) {
-		var apiUrl = 'https://checkout-api.candypay.fun/api/v1/session/payment_url?session_id=' + sessionId;
+		const apiUrl = 'https://checkout-api.candypay.fun/api/v1/session/payment_url?session_id=' + sessionId;
 		// Thêm header Authorization vào yêu cầu
-		var headers = {
+		const headers = {
 
-			'Authorization': 'Bearer ' + 'cp_public_hyeSyr4a_LbnJTTJ2NvMGKPjwQfv9hHQN' // Thay yourPublicApiKey bằng giá trị Public API key của bạn
+			'Authorization': 'Bearer ' + 'cp_public_ecHjg7Uc_6gwDsez4EPi4QT6nHeGxdJwB' // Thay yourPublicApiKey bằng giá trị Public API key của bạn
 		};
 
 		$http.get(apiUrl, { headers: headers })

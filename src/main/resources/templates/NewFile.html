@@ -42,7 +42,6 @@
 				$http.post('/api/checkout/session', $scope.requestData)
 					.then(function (response) {
 						var sessionId = response.data.session_id;
-						console.log(sessionId);
 						$scope.generatePaymentURL(sessionId);
 					})
 					.catch(function (error) {
@@ -51,10 +50,11 @@
 			};
 
 			$scope.generatePaymentURL = function (sessionId) {
+				console.log(sessionId);
 				var apiUrl = 'https://checkout-api.candypay.fun/api/v1/session/payment_url?session_id=' + sessionId;
 				// Thêm header Authorization vào yêu cầu
 				var headers = {
-					'Authorization': 'Bearer ' + 'cp_public_AYzhvALF_37RQtcqBrrRMak2kwRw9USNv' // Thay yourPublicApiKey bằng giá trị Public API key của bạn
+					'Authorization': 'Bearer ' + 'cp_public_ecHjg7Uc_6gwDsez4EPi4QT6nHeGxdJwB' // Thay yourPublicApiKey bằng giá trị Public API key của bạn
 				};
 
 				$http.get(apiUrl, {headers: headers})
@@ -65,6 +65,7 @@
 					})
 					.catch(function (error) {
 						console.error(error);
+						console.error('Response data:', error.response.data);
 					});
 			};
 		})
