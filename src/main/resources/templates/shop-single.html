@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{/layout/layout.html::dynamic(~{::title}, ~{::body})}">
+	th:replace="~{/layout/layout2.html::dynamic(~{::title}, ~{::body})}">
+
+
 <head>
-<title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+<title>Shoe Galaxy</title>
+
 <meta charset="utf-8">
 </head>
 <body>
-	<div class="bg-light py-3">
+
+
+	<div class="bg-light p-4">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mb-0">
@@ -16,27 +21,22 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="site-section">
+	<div class="site-sectionn pt-4">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<!-- <img src="../../images/${prod.image}" alt="Image" class="img-fluid"> -->
-					<img th:src="@{|/images/${prod.image}|}" alt="Image"
-						class="img-fluid">
+					<img alt="" th:src="@{|/images/${prod.image}|}" height="260px"
+						width="100%">
 				</div>
-				<div class="col-md-6">
-					<p th:text="${prod.name}"></p>
-					<p>
-						<strong class="text-primary h4" th:text="'$ ' + ${prod.price}">
-						</strong>
-					</p>
-					<p>
-
-						<a th:href="@{|/cart.html/add/${prod.id}|}"
-							class="mt-5 buy-now btn btn-sm w-100 btn-primary">Add To Cart</a>
-					</p>
-
+				<div class="col-md-6 mt-5">
+					<h3 th:text="${prod.name}" class="mb-3"></h3>
+					<span>Quantity : </span> <input name="count" class="mt-3"
+						type="number" min="1" style="width: 60px;" ng-model="quantity"
+						ng-init="quantity = 1" /> <a
+						th:attr="ng-click=@{|cart.add(${prod.id})|}"
+						class="mt-3 mb-3 buy-now btn btn-sm w-100 btn-primary"
+						style="color: white" ng-click="saveToLocalStorage()">Add To
+						Cart</a>
 					<p>
 						<a href="/shop.html" class="btn btn-primary btn-sm btn-block">Continue
 							Shopping</a>
@@ -44,8 +44,104 @@
 
 				</div>
 
+
+
 			</div>
+			<div style="border-bottom: groove;" class="mt-5"></div>
+			<div class="container my-5">
+				<h2>Comments</h2>
+				<form action="/shop.html/addComments" method="post">
+					<input type="hidden" name="productId" th:value="${prod.id}"
+						class="form-control mb-3" />
+					<div class="form-group">
+						<label for="comment">Comment:</label>
+						<textarea class="form-control" id="comment" name="description"
+							rows="4" required></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+
+				<div id="comments-container">
+					<div th:each="cmt, iterStat : ${comment}"
+						class="card my-3 border-0" th:if="${iterStat.index < 20}">
+						<div class="card-body comment-body">
+							<div class="row">
+								<div class="col-md-1">
+									<img th:src="@{|/images/${cmt.account.photo}|}"
+										class="img-fluid rounded-circle comment-user-img" alt="User">
+								</div>
+								<div class="col-md-11">
+									<h5 th:text="${cmt.account.fullname}" class="comment-user-name"></h5>
+									<p th:text="${#dates.format(cmt.create_Date, 'dd-MM-yyyy')}"
+										class="comment-date"></p>
+									<p th:text="${cmt.description}" class="comment-description"></p>
+									<button class="btn btn-secondary btn-sm mt-2 reply-btn"
+										data-comment-id="${cmt.id}">Reply</button>
+									<div class="reply-form card border-0"
+										data-comment-id="${cmt.id}" style="display: none;">
+										<form action="/shop.html/replyComments" method="post"
+											onsubmit="hideOtherReplyForms('replyForm-${cmt.id}')">
+											<input type="hidden" name="productIdReply"
+												class="form-control mb-3" /> <input type="hidden"
+												name="parentId" th:value="${cmt.id}"
+												class="form-control mb-3" />
+											<div class="form-group">
+												<label for="comment">Comment:</label>
+												<textarea class="form-control" name="descriptionReply"
+													rows="4" required></textarea>
+											</div>
+											<button type="submit" class="btn btn-primary">Submit</button>
+										</form>
+									</div>
+
+									<!-- Display replies -->
+									<div class="replies-container-${cmt.id}">
+										<div th:each="rpl : ${reply}"
+											th:if="${rpl.comment.id} == ${cmt.id}"
+											class="card my-3 reply-card border-0">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-1">
+														<img th:src="@{|/images/${rpl.account.photo}|}"
+															class="img-fluid rounded-circle reply-user-img"
+															alt="User">
+													</div>
+													<div class="col-md-11">
+														<h5 th:text="${rpl.account.fullname}"
+															class="reply-user-name"></h5>
+														<p
+															th:text="${#dates.format(rpl.create_date, 'dd-MM-yyyy')}"
+															class="reply-date"></p>
+														<p th:text="${rpl.description}" class="reply-description"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
+
 </body>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@2.11.6/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".reply-btn").click(function() {
+			var commentId = $(this).data('comment-id');
+			$('.reply-form').hide();
+			$(this).siblings('.reply-form').show();
+		});
+	});
+</script>
 </html>

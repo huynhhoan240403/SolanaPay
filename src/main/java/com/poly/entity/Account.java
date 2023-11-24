@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,24 +26,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "Accounts")
-public class Account implements Serializable{
-		@Id
-	     String username;
-	     String password;
-	    
-	     String email;
-	     String fullname;
+public class Account implements Serializable {
+	@Id
+	String username;
+	String password;
 
-	    @JsonIgnore
-	    @OneToMany(mappedBy = "account",fetch = FetchType.EAGER)
-	    private List<Authorities> authorities;
+	String email;
+	String fullname;
+	String photo;
 
-	    @JsonIgnore
-	    @OneToMany(mappedBy = "account")
-	    private List<BankAccount> bankAccounts;
+	@JsonIgnore
+	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+	private List<Authorities> authorities;
 
-	    @JsonIgnore
-	    @OneToMany(mappedBy = "account")
-	    private List<Transaction> transactions;
+	@JsonIgnore
+	@OneToMany(mappedBy = "account")
+	private List<BankAccount> bankAccounts;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "account")
+	private List<Transaction> transactions;
 
 }

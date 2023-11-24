@@ -41,9 +41,6 @@
 							<tr ng-repeat="item in cart.items">
 								<td><img src="https://imgur.com/M0l5SDh.png" style="width:50%">
 								</td>
-
-
-
 								<td>{{item.name}}</td>
 							
 								<!-- <td>${{item.price | number : 2}}</td> -->
@@ -51,8 +48,6 @@
 								<td><input ng-change="cart.saveToLocalStorage()"
 									name="count" ng-model="item.qty" type="number" min="1"
 									style="width: 60px;" /></td>
-
-								<!-- <td>${{cart.amt_of(item) | number : 2}}</td> -->
 								<td>${{cart.amtt_of(item) | number : 2}}</td>
 								<td>
 									<button ng-click="cart.remove(item.id)"
@@ -79,7 +74,7 @@
 				<div class="col-md-6">
 					<div class="row mb-5">
 						<div class="col-md-6 mb-3 mb-md-0">
-							<a href="/index.html" class="btn btn-primary btn-sm btn-block">Continue
+							<a href="/product.html" class="btn btn-primary btn-sm btn-block">Continue
 								Shopping</a>
 						</div>
 						<div class="col-md-6">
