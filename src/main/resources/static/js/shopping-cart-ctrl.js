@@ -1,20 +1,6 @@
 const app = angular.module("app", [])
 app.controller("cart-ctrl", function($scope, $http, $window) {
-	// quản lý giỏ hàng
-	/*$scope.prodd = [
-		{ size: '36' },
-		{ size: '37' },
-		{ size: '39' },
-		{ size: '40' },
-		{ size: '41' },
-		{ size: '42' },
-		// ... Thêm dữ liệu size giày vào đây
-	];*/
-
-
 	$scope.cart = [];
-
-
 
 	var $cart = $scope.cart = {
 		items: [],
@@ -51,8 +37,6 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 				return (item.price - (item.price * item.discount_sale.percentage / 100))
 			}
 		},
-
-
 		amtt_of(item) {
 			var itemPrice = this.price_product(item); // Gọi hàm price_product(item) từ cùng đối tượng
 			return itemPrice * item.qty; // Tính giá tiền của sản phẩm với số lượng
