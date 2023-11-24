@@ -106,7 +106,7 @@ public class ProductController {
 		model.addAttribute("message", "Comment added successfully!");
 		 // Truy vấn danh sách hãng và số lượng sản phẩm tương ứng
 		// Return the name of your success template
-		return "shop-single.html";
+		 return "redirect:/shop-single.html/" + idProduct;
 	}
 
 	@PostMapping("/shop.html/replyComments")
@@ -161,7 +161,7 @@ public class ProductController {
 		model.addAttribute("reply", reply);
 		// Add a success message to the model
 		model.addAttribute("message", "Comment added successfully!");
-		return "shop-single.html";
+		 return "redirect:/shop-single.html/" + idProduct;
 	}
 	
 	
