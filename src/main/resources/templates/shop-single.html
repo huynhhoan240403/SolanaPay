@@ -71,7 +71,7 @@
 									<p th:text="${#dates.format(cmt.create_Date, 'dd-MM-yyyy')}"
 										class="comment-date"></p>
 									<p th:text="${cmt.description}" class="comment-description"></p>
-
+									
 									<button class="btn btn-secondary btn-sm mt-2 reply-btn"
 										data-comment-id="${cmt.id}">Reply</button>
 									<div class="reply-form card border-0"
