@@ -1,3 +1,4 @@
+
 /* Font family for code */
 .bd{
 /* animation: changeColor 20s infinite;	 */
@@ -199,6 +200,7 @@ code {
     color: white;
     top:0px;
     text-decoration: none} 
+
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 
@@ -407,4 +409,168 @@ button, .dot {
   100% {
     left: 25%;
   }
+}
+.site-cart{
+  text-decoration: none;
+  color: white;
+}
+.d-block{
+  width: 1688px;
+  height: 500px;
+
+}
+.da{
+  position:fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.card-read{
+  width: 600px;
+}
+
+.card2{
+  width: 300px;
+}
+.card-title2{
+  color: white;
+  font-weight: bold;
+}
+.card-text2{
+  color: white;
+}
+.card-header{
+  color: white;
+  font-weight: bold;
+}
+.card-title3{
+  color: white;
+  font-weight:bold ;
+  margin-top: 20px;
+  font-size: 100px;
+}
+.card3{
+  height: 350px;
+  background-color: #111111;
+}
+.card-text3{
+  color: white;
+}
+#carouselBasicExample{
+  margin-top: 100px;
+}
+.card-img-top-read:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+.card-img-top-read{
+  width: 600px;
+}
+
+
+.da {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.nav-link {
+  padding: 0 30px;
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.img {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px ;
+}
+
+.fa-bell {
+  color: yellow;
+  margin-left: 20px;
+}
+
+.fa-heart {
+  color: red;
+  margin-left: 20px;
+}
+
+.add-to-cart,
+.buy-now,
+.continue-shopping {
+  margin-right: 30px;
+  width: 240px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+
+}
+
+.text {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+
+.price {
+  font-size: 30px;
+  color: white;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+
+}
+
+.content {
+  font-size: 15px;
+  color: white;
+}
+
+.quantity {
+  font-size: 30px;
+  color: white;
+}
+
+.img-more {
+  width: 300px;
+  height: 200px;
+}
+
+.card-more {
+  margin-top: 30px;
+  height: 350px;
+}
+
+.img-more:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.price-more {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.custom-body-style {
+  background-color: #111111;
 }
