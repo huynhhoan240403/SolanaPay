@@ -1,7 +1,25 @@
 app.controller("accounts-ctrl", function($scope, $http) {
 	$scope.items = [];
 	$scope.form = {};
+    //
+    $scope.previewImage = function(input) {
+        var preview = document.getElementById('preview');
+        var file = input.files[0];
+        var reader = new FileReader();
 
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    };
+    //
 	$scope.initialize = function() {
 
 		$http.get("/rest/accounts").then(resp => {

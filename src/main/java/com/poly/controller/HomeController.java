@@ -13,4 +13,8 @@ public class HomeController {
 	public String adminaa() {
 		return "NewFile";
 	}
+	@RequestMapping("/activity")
+	public String activity() {
+		return "activity.html";
+	}
 }
