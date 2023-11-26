@@ -3,12 +3,14 @@ package com.poly.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.poly.dao.CommentDAO;
 import com.poly.entity.Comment;
 import com.poly.entity.Reply;
 import com.poly.service.CommentService;
 
+@Service
 public class CommentServiceImpl implements CommentService{
 	
 	@Autowired
