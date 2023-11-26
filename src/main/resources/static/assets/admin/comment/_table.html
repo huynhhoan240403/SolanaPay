@@ -10,7 +10,9 @@
 				<th>Create Date</th>
 				<th>Product</th>
 				<th>Show Replies Detail</th>
+
 				<th>Action</th>
+				<th>Send reward</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -18,34 +20,63 @@
 				<td>{{comment.id}}</td>
 				<td>{{comment.account.username}}</td>
 				<td>
-					<button class="btn btn-primary" ng-if="!comment.showWallet"
-						ng-click="toggleWallet(comment)">Get Wallet</button> <span
-					ng-if="comment.showWallet" ng-click="toggleWallet(comment)">{{
+					<button class="btn btn-primary" ng-if="!comment.showWallet" ng-click="toggleWallet(comment)">Get
+						Wallet</button> <span ng-if="comment.showWallet" ng-click="toggleWallet(comment)">{{
 						comment.wallet }}</span>
 				</td>
 				<td>{{comment.description}}</td>
 				<td>{{comment.create_Date | date:'dd/MM/yyyy'}}</td>
 				<td>{{comment.product.name}}</td>
 				<td class="text-center">
-					<button ng-click="showReplies(comment)"
-						class="btn text-center btn-info">{{comment.showReplies ?
+					<button ng-click="showReplies(comment)" class="btn text-center btn-info">{{comment.showReplies ?
 						'Hide' : 'Show'}}</button>
 				</td>
 				<td>
 					<div class="btn-group btn-group-xs">
 						<a ng-click="editComment(comment)" href="" class="btn btn-warning">
 							<i class="fa-solid fa-pen-to-square fa-2xs"></i>
-						</a> <a ng-click="deleteComment(comment)" href=""
-							class="btn btn-danger"> <i class="fa-solid fa-trash fa-2xs"></i>
+						</a> <a ng-click="deleteComment(comment)" href="" class="btn btn-danger"> <i
+								class="fa-solid fa-trash fa-2xs"></i>
 						</a>
 					</div>
 				</td>
+				<td>
+
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#exampleModal{{comment.id}}">
+						Send gift
+					</button>
+					<div class="modal fade" id="exampleModal{{comment.id}}" tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel{{comment.id}}">Send gift</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p>{{comment.wallet}}</p>
+									<p>Gửi 0.1 sol qua tài khoản {{comment.account.username}}</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary"
+										ng-click="transferSol(comment.wallet)">Send</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+
+				<!-- Modal -->
+
 			</tr>
 		</tbody>
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner" ng-repeat="comment in pager.items">
-				<table class="table table-condensed table-dark detail-table"
-					ng-show="comment.showReplies">
+				<table class="table table-condensed table-dark detail-table" ng-show="comment.showReplies">
 					<thead class="bg-danger text-white">
 						<tr>
 							<th>Reply Id</th>
@@ -91,3 +122,4 @@
 		</button>
 	</div>
 </div>
+
