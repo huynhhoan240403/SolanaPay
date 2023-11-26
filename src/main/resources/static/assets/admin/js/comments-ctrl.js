@@ -7,7 +7,42 @@ app.controller("comments-ctrl", function($scope, $http) {
 	$scope.accounts = [];
 	$scope.wallet = null;
 	$scope.showWallet = false;
+	const SHYFT_API_KEY = "bjF5eRvXmibGXZkw";
+	const toTransaction = (encodedTransaction) => solanaWeb3.Transaction.from(Uint8Array.from(atob(encodedTransaction), c => c.charCodeAt(0)));
+	const fromAddress = "hM9MiQ3TQx5EtD69yyNVCTP1WaLA5zmzqF1t9ENeCde";
 
+	$scope.transferSol = async function(toAddress) {
+		// Các công việc cần làm khi nhấp nút Send
+		var myHeaders = new Headers();
+		myHeaders.append("x-api-key", SHYFT_API_KEY);
+		myHeaders.append("Content-Type", "application/json");
+
+		var raw = JSON.stringify({
+			"network": "devnet",
+			"from_address": fromAddress,
+			"to_address": toAddress,  // Sử dụng giá trị được truyền vào hàm
+			"amount": 0.1
+		});
+
+		var requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch("https://api.shyft.to/sol/v1/wallet/send_sol", requestOptions)
+			.then(async response => {
+				let res = await response.json();
+				let transaction = toTransaction(res.result.encoded_transaction);
+
+				const signedTransaction = await window.phantom.solana.signTransaction(transaction);
+				const connection = new solanaWeb3.Connection("https://api.devnet.solana.com")
+				const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+			})
+			.catch(error => console.log('error', error));
+
+	};
 
 	$scope.showReplies = function(comment) {
 		if (comment.showReplies) {
