@@ -2,7 +2,12 @@
 	<div class="panel-heading">ACCOUNTS EDITION</div>
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-sm-12">
+		 <div class="col-sm-4">
+            <label for="image">Choose Image:</label>
+            <input type="file" id="image"ng-model="form.photo" accept="image/*" class="form-control-file" onchange="previewImage(this)">
+            <img id="preview" th:src="@{|/images/form.photo|}" alt="Preview"  class="img-fluid mt-2" style="display: none;">
+        </div>
+			<div class="col-sm-8">
 				<div class="row">
 					<div class="form-group col-sm-6">
 						<div>UserName</div>

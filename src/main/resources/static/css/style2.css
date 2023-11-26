@@ -1,36 +1,206 @@
-.navbar {
-    background-color: #00008B; /* Màu nền của thanh điều hướng */
-    color: white; /* Màu chữ trắng */
-    padding: 10px 0; /* Khoảng cách nội dung từ viền trên và dưới */
-     
+
+/* Font family for code */
+.bd{
+/* animation: changeColor 20s infinite;	 */
+width: 100%;
+position: relative;
+background: black;
 }
+/* @keyframes changeColor { */
+/*     0% { */
+/*         background-color: black; Màu đỏ */
+/*     } */
+/*     25% { */
+/*         background-color: #ee83e5; Màu xanh lá cây */
+/*     } */
+/*     50% { */
+/*         background-color: white; Màu xanh dương */
+/*     } */
+/*     75% { */
+/*         background-color: #a89ec9; Màu vàng */
+/*     } */
+/*     100% { */
+/*         background-color: black; Màu hồng */
+/*     } */
+/* } */
+#background-video{
+	width: 100%;
+	position: absolute;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.nft {
+    flex: 1;
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #282c34;
+    border: 1px solid #ffffff22;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    transition: 0.5s all;
+    
+}
+
+.nft hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #88888855;
+  margin-top: 0;
+}
+
+.nft ins {
+  text-decoration: none;
+}
+
+.nft .main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   
+  padding: 1rem;
+}
+
+.nft .main .tokenImage {
+  border-radius: 0.5rem;
+  max-width: 100%;
+  height: 300px;
+  max-height:90%;
+  object-fit: cover;
+}
+
+.nft .main .description {
+  margin: 0.5rem 0;
+  color: #a89ec9;
+}
+
+.nft .main .tokenInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nft .main .tokenInfo .price {
+  display: flex;
+  align-items: center;
+  color: #ee83e5;
+  font-weight: 700;
+}
+
+.nft .main .tokenInfo .price ins {
+  margin-left: -0.3rem;
+  margin-right: 0.5rem;
+}
+
+.nft .main .tokenInfo .duration {
+  display: flex;
+  align-items: center;
+  color: #a89ec9;
+  margin-right: 0.2rem;
+}
+
+.nft .main .tokenInfo .duration ins {
+  margin: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.nft .main .creator {
+  display: flex;
+  align-items: center;
+  margin-top: 0.2rem;
+  margin-bottom: -0.3rem;
+}
+
+.nft .main .creator ins {
+  color: #a89ec9;
+  text-decoration: none;
+}
+
+.nft .main .creator .wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff22;
+  padding: 0.3rem;
+  margin: 0;
+  margin-right: 0.5rem;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 4px #000000aa;
+}
+
+.nft .main .creator .wrapper img {
+  border-radius: 100%;
+  border: 1px solid #ffffff22;
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  margin: 0;
+}
+
+.nft::before {
+  position: fixed;
+  content: "";
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: 0.7s all;
+}
+
+.nft:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.015);
+  filter: brightness(1.3);
+}
+
+.nft:hover::before {
+  filter: brightness(0.5);
+  top: -100%;
+  left: 200%;
+}
+
+.bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg h1 {
+  font-size: 20rem;
+  filter: opacity(0.5);
+}
+
+
   /* Áp dụng CSS cho các liên kết trong thanh điều hướng */
-  .nav-content {
-    text-decoration: none; /* Loại bỏ gạch chân cho liên kết */
-    color: white; /* Màu chữ trắng cho liên kết */
-    margin-right: 20px; /* Khoảng cách giữa các liên kết */
-    font-weight: bold; /* Đậm chữ cho liên kết */
-  }
+  .nav-content { 
+     text-decoration: none; 
+   color: white; 
+    margin-right: 20px; 
+   font-weight: bold; 
+   } 
   
-  /* Đặt kiểu chữ khi di chuột qua liên kết */
-  .nav-content:hover {
-   border-bottom: solid 0.1px aliceblue;
-   border-radius: 20px;
-  }
+/*   Đặt kiểu chữ khi di chuột qua liên kết */
+/*   .nav-content:hover { */
+/*    border-bottom: solid 0.1px aliceblue; */
+/*    border-radius: 20px; */
+/*   } */
   
-  /* Áp dụng CSS cho các nút bên phải */
-  .btn-outline-light {
-    color: white; /* Màu chữ trắng */
-    border-color: white; /* Màu viền trắng */
-    margin-right: 10px; /* Khoảng cách giữa các nút */
-  }
+ 
+ 
   
-  /* Đặt kiểu chữ khi di chuột qua nút */
   .btn-outline-light:hover {
-    background-color: white; /* Màu nền trắng khi di chuột qua */
-    color: #333; /* Màu chữ đen khi di chuột qua */
-  }
+    background-color: black; 
+    color: white;
+    top:0px;
+    text-decoration: none} 
+
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 
@@ -239,4 +409,168 @@ button, .dot {
   100% {
     left: 25%;
   }
+}
+.site-cart{
+  text-decoration: none;
+  color: white;
+}
+.d-block{
+  width: 1688px;
+  height: 500px;
+
+}
+.da{
+  position:fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.card-read{
+  width: 600px;
+}
+
+.card2{
+  width: 300px;
+}
+.card-title2{
+  color: white;
+  font-weight: bold;
+}
+.card-text2{
+  color: white;
+}
+.card-header{
+  color: white;
+  font-weight: bold;
+}
+.card-title3{
+  color: white;
+  font-weight:bold ;
+  margin-top: 20px;
+  font-size: 100px;
+}
+.card3{
+  height: 350px;
+  background-color: #111111;
+}
+.card-text3{
+  color: white;
+}
+#carouselBasicExample{
+  margin-top: 100px;
+}
+.card-img-top-read:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+.card-img-top-read{
+  width: 600px;
+}
+
+
+.da {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.nav-link {
+  padding: 0 30px;
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.img {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px ;
+}
+
+.fa-bell {
+  color: yellow;
+  margin-left: 20px;
+}
+
+.fa-heart {
+  color: red;
+  margin-left: 20px;
+}
+
+.add-to-cart,
+.buy-now,
+.continue-shopping {
+  margin-right: 30px;
+  width: 240px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+
+}
+
+.text {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+
+.price {
+  font-size: 30px;
+  color: white;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+
+}
+
+.content {
+  font-size: 15px;
+  color: white;
+}
+
+.quantity {
+  font-size: 30px;
+  color: white;
+}
+
+.img-more {
+  width: 300px;
+  height: 200px;
+}
+
+.card-more {
+  margin-top: 30px;
+  height: 350px;
+}
+
+.img-more:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.price-more {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.custom-body-style {
+  background-color: #111111;
 }
