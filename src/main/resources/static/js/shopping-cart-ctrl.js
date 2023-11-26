@@ -2,6 +2,8 @@ const app = angular.module("app", [])
 app.controller("cart-ctrl", function($scope, $http, $window) {
 	$scope.cart = [];
 	$scope.publicKey = '';
+	const SHYFT_API_KEY = "bjF5eRvXmibGXZkw";
+	$scope.balance = 0.0;
 
 	var $cart = $scope.cart = {
 		items: [],
@@ -105,7 +107,6 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 		$scope.publicKey = window.phantom.solana.publicKey.toBase58();
 		var spanElement = document.getElementById('remoteU');
 		var spanText = spanElement !== null ? spanElement.innerText : null;
-		var accountData = null;
 
 		if (spanText) {
 			$http.get(`/rest/accounts/${spanText}`).then(function(response) {
@@ -115,17 +116,47 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 					$http.put(`/rest/accounts/${spanText}`, data)
 						.then(function(response) {
 							console.log("Dữ liệu đã được cập nhật trong cơ sở dữ liệu", response.data);
+							alert('Kết nối ví thành công');
 						})
 						.catch(function(error) {
 							console.error("Lỗi khi cập nhật dữ liệu trong cơ sở dữ liệu: ", error);
 						});
-					console.log("Dữ liệu đã được cập nhật:", accountData);
 				}
 			}).catch(function(error) {
 				console.error("Lỗi khi thực hiện yêu cầu GET: ", error);
 			});
 		}
 	};
+
+	$scope.getBalance = async function() {
+		var myHeaders = new Headers();
+		myHeaders.append("x-api-key", SHYFT_API_KEY);
+		var spanElement = document.getElementById('remoteU');
+		var spanText = spanElement !== null ? spanElement.innerText : null;
+
+		await $http.get(`/rest/accounts/${spanText}`).then(function(response) {
+			if (response.data) {
+				var requestOptions = {
+					method: 'GET',
+					headers: myHeaders,
+					redirect: 'follow'
+				};
+
+				fetch("https://api.shyft.to/sol/v1/wallet/balance?network=devnet&wallet=" + response.data.wallet_key, requestOptions)
+					.then(async response => {
+						let res = await response.json();
+						$scope.$apply(function() {
+							$scope.balance = res.result.balance;
+							console.log("Balance: " + $scope.balance);
+						});
+					})
+					.catch(error => console.log('lỗi', error));
+			}
+		}).catch(function(error) {
+			console.error("Lỗi khi thực hiện yêu cầu GET: ", error);
+		});
+
+	}
 
 	$scope.requestData = {
 		network: 'devnet',
