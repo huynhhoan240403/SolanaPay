@@ -7,9 +7,11 @@ app.controller("comments-ctrl", function($scope, $http) {
 	$scope.accounts = [];
 	$scope.wallet = null;
 	$scope.showWallet = false;
+	$scope.showSendGiftButton = false;
+
 	const SHYFT_API_KEY = "bjF5eRvXmibGXZkw";
 	const toTransaction = (encodedTransaction) => solanaWeb3.Transaction.from(Uint8Array.from(atob(encodedTransaction), c => c.charCodeAt(0)));
-	const fromAddress = "hM9MiQ3TQx5EtD69yyNVCTP1WaLA5zmzqF1t9ENeCde";
+	const fromAddress = "8D3GM6stYuchNSpq8grYhbZwqkjmnSGEaGLsj3yaXfzh";
 
 	$scope.transferSol = async function(toAddress) {
 		// Các công việc cần làm khi nhấp nút Send
@@ -39,6 +41,9 @@ app.controller("comments-ctrl", function($scope, $http) {
 				const signedTransaction = await window.phantom.solana.signTransaction(transaction);
 				const connection = new solanaWeb3.Connection("https://api.devnet.solana.com")
 				const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+				// Sau khi xác nhận giao dịch, bạn có thể thực hiện các công việc khác tại đây
+				console.log("Giao dịch thành công! Signature:", signature);
+				alert("Giao dịch đã thành công!");
 			})
 			.catch(error => console.log('error', error));
 
@@ -85,15 +90,20 @@ app.controller("comments-ctrl", function($scope, $http) {
 			comment.wallet = resp.data.wallet_key;
 			console.log(comment.wallet);
 			comment.showWallet = true;
+			comment.showSendGiftButton = true;
 		});
 	};
 
 	$scope.toggleWallet = function(comment) {
 		if (!comment.showWallet) {
 			$scope.getWallet(comment);
+			comment.showWallet = !comment.showWallet;
 		} else {
 			comment.showWallet = !comment.showWallet;
 		}
+	};
+	$scope.toggleSendGiftButton = function(comment) {
+		$scope.showSendGiftButton = !$scope.showSendGiftButton && !comment.showWallet;
 	};
 
 	$scope.initialize = function() {
@@ -108,6 +118,7 @@ app.controller("comments-ctrl", function($scope, $http) {
 		$http.get("/rest/accounts").then(resp => {
 			$scope.accounts = resp.data;
 		});
+		$scope.showSendGiftButton = false;
 		$scope.resetForm();
 	}
 	$scope.deleteComment = function(comment) {
