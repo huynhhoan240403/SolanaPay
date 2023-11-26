@@ -35,7 +35,7 @@ public class LoginController {
 	@RequestMapping("/login/error")
 	public String error(Model model) {
 		model.addAttribute("message", "Sai thông tin đăng nhập!");
-		return "forward:/login";
+		return "redirect:/login";
 	}
 
 	@RequestMapping("/logout/success")
@@ -62,6 +62,7 @@ public class LoginController {
 	        model.addAttribute("error", "Vui lòng đặt tên username khác!");
 	    } else if (!password.equals(confirmPassword)) {
 	        model.addAttribute("error", "Mật khẩu và xác nhận mật khẩu không khớp. Vui lòng nhập lại.");
+	        return "register";
 	    } else {
 	        Account user = new Account();
 	        user.setUsername(username);
@@ -70,6 +71,7 @@ public class LoginController {
 	        user.setFullname(fullname);
 	        accDAO.save(user);
 	        model.addAttribute("message", "Đăng ký thành công");
+	        return "register";
 	    }
 	    return "register";
 	}

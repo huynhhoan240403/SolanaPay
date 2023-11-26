@@ -4,9 +4,60 @@
 <head>
 <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
 <meta charset="utf-8">
+ <style type="text/css">
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #ececec;
+}
+
+/*------------ Login container ------------*/
+
+.box-area{
+    width: 930px;
+}
+
+/*------------ Right box ------------*/
+
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+
+/*------------ Custom Placeholder ------------*/
+
+::placeholder{
+    font-size: 16px;
+}
+
+.rounded-4{
+    border-radius: 20px;
+}
+.rounded-5{
+    border-radius: 30px;
+}
+
+
+/*------------ For small screens------------*/
+
+@media only screen and (max-width: 768px){
+
+     .box-area{
+        margin: 0 10px;
+
+     }
+     .left-box{
+        height: 100px;
+        overflow: hidden;
+     }
+     .right-box{
+        padding: 20px;
+     }
+
+}</style>
 </head>
 <body>
-	<div class="bg-light py-3">
+	<!-- <div class="bg-light py-3">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mb-0">
@@ -19,7 +70,7 @@
 
 	<div class="site-section">
 		<div class="container">
-			<!-- Form-->
+			Form
 			<div class="form">
 				<div class="form-toggle"></div>
 				<div class="form-panel one">
@@ -53,10 +104,10 @@
 									type="password" name="confirmPassword" required="required" />
 							</div>
 							
-							<!-- <div class="form-group">
+							<div class="form-group">
 								<label for="password">Email</label> <input id="password" placeholder="Email"
 									type="email" name="email" required="required" />
-							</div> -->
+							</div>
 
 							<div class="form-group">
 								<button type="submit">Sign Up</button>
@@ -66,6 +117,101 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	  <!----------------------- Main Container -------------------------->
+
+    <div
+      class="container d-flex justify-content-center align-items-center min-vh-100"
+    >
+    
+      <!----------------------- Login Container -------------------------->
+
+      <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        <!--------------------------- Left Box ----------------------------->
+
+        <div
+          class="col-md-6 rounded-4 d-flex justify-content-center flex-column left-box"
+        >
+            <div >
+          <div class="row">
+            <div class="col-md-12 mb-0">
+              <a href="/index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Register</strong>
+            </div>
+          </div>
+        </div>
+          <div class="featured-image mb-3">
+            <img
+              src="/images/solana-logo.png"
+              class="img-fluid"
+              style="width: 100%; height: 100%"
+            />
+          </div>
+        </div>
+
+        <!-------------------- ------ Right Box ---------------------------->
+
+        <div class="col-md-6 right-box">
+          <div class="row align-items-center">
+            <div class="header-text mb-4">
+              <h2>Hello,Again</h2>
+              <p>We are happy to have you back.</p>
+            </div>
+              <form action="/register/success" method="post">
+               <p class="text-danger">[[${message}]] [[${param.error}]]</p>
+                <c:if test="${not empty error}">
+									<div class="form-text text-danger">[[${error}]]</div>
+								</c:if>
+            <div class="input-group mb-3">
+            
+              <input id="username" name="username" required="required"
+                type="text"
+                class="form-control form-control-lg bg-light fs-6"
+                placeholder="Username"
+              />
+            </div>
+           
+             <div class="input-group mb-3">
+            
+              <input id="fullname" name="fullname" required="required"
+                type="text"
+                class="form-control form-control-lg bg-light fs-6"
+                placeholder="Fullname"
+              />
+            </div>
+             <div class="input-group mb-3">
+            
+              <input id="email" name="email" required="required"
+                type="text"
+                class="form-control form-control-lg bg-light fs-6"
+                placeholder="Email"
+              />
+            </div>
+             <div class="input-group mb-3">
+            
+              <input id="password" name="password" required="required"
+                type="password"
+                class="form-control form-control-lg bg-light fs-6"
+                placeholder="Password"
+              />
+            </div>
+             <div class="input-group mb-3">
+            
+              <input id="confirmPassword" name="confirmPassword" required="required"
+                type="password"
+                class="form-control form-control-lg bg-light fs-6"
+                placeholder="Confirm Password"
+              />
+            </div>
+            
+      
+            <div class="input-group mb-3">
+              <button class="btn btn-lg btn-primary w-100 fs-6">Sign Up</button>
+            </div>
+
+               </form>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
