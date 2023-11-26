@@ -1,6 +1,7 @@
 const app = angular.module("app", [])
 app.controller("cart-ctrl", function($scope, $http, $window) {
 	$scope.cart = [];
+	$scope.publicKey = '';
 
 	var $cart = $scope.cart = {
 		items: [],
@@ -97,6 +98,34 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 		}
 	}
 
+
+	// Định nghĩa hàm connectWallet
+	$scope.connectWallet = async function() {
+		await window.phantom.solana.connect();
+		$scope.publicKey = window.phantom.solana.publicKey.toBase58();
+		var spanElement = document.getElementById('remoteU');
+		var spanText = spanElement !== null ? spanElement.innerText : null;
+		var accountData = null;
+
+		if (spanText) {
+			$http.get(`/rest/accounts/${spanText}`).then(function(response) {
+				if (response.data) {
+					var data = response.data;
+					data.wallet_key = $scope.publicKey;
+					$http.put(`/rest/accounts/${spanText}`, data)
+						.then(function(response) {
+							console.log("Dữ liệu đã được cập nhật trong cơ sở dữ liệu", response.data);
+						})
+						.catch(function(error) {
+							console.error("Lỗi khi cập nhật dữ liệu trong cơ sở dữ liệu: ", error);
+						});
+					console.log("Dữ liệu đã được cập nhật:", accountData);
+				}
+			}).catch(function(error) {
+				console.error("Lỗi khi thực hiện yêu cầu GET: ", error);
+			});
+		}
+	};
 
 	$scope.requestData = {
 		network: 'devnet',

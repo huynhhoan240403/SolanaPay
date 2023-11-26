@@ -33,9 +33,9 @@
         }
 
         @PutMapping("/{id}")
-        public Account put(@PathVariable("id") String username, @RequestBody Account account) {
-            return accountService.update(account);
-        }
+		public Account put(@PathVariable("id") String username, @RequestBody Account account) {
+			return accountService.update(account);
+		}
 
         @DeleteMapping("/{id}")
         public void delete(@PathVariable("id") String username) {

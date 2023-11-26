@@ -50,12 +50,13 @@
 		<div class="flex-1">
 			<a href="/index2.html" class="btn btn-ghost text-xl">Solana</a> <a
 				href="#" class="btn btn-ghost text-xs">Send and Request</a> <a
-				href="#" class="btn btn-ghost text-xs">Wallet</a> <a
+				href="" class="btn btn-ghost text-xs" ng-click="connectWallet()">Wallet</a> <a
 				href="/activity" class="btn btn-ghost text-xs">Activity</a> <a
 				href="#" class="btn btn-ghost text-xs">Help</a> <a
 				href="/product.html" class="btn btn-ghost text-xs">Products</a>
 		</div>
 		<div class="flex-none justify-end">
+		<span id="remoteU" th:text="${#request.remoteUser}"></span>
 			<a href="/cart.html" tabindex="0" class="btn btn-ghost btn-circle">
 				<div class="indicator">
 					<i class="fa-solid fa-cart-shopping"></i> <span
