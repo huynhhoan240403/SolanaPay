@@ -9,7 +9,9 @@ app.controller("comments-ctrl", function($scope, $http) {
 	$scope.showWallet = false;
 	$scope.showSendGiftButton = false;
 
+
 	let publicKey;
+
 	const SHYFT_API_KEY = "bjF5eRvXmibGXZkw";
 	const toTransaction = (encodedTransaction) => solanaWeb3.Transaction.from(Uint8Array.from(atob(encodedTransaction), c => c.charCodeAt(0)));
 	const fromAddress = "8D3GM6stYuchNSpq8grYhbZwqkjmnSGEaGLsj3yaXfzh";
@@ -63,21 +65,25 @@ app.controller("comments-ctrl", function($scope, $http) {
 			.catch(error => console.log('error', error));
 
 	};
+    $scope.comments.forEach(function(comment) {
+        comment.showReplies = false;
+    });
+	
+    $scope.showReplies = function(comment) {
+        // Toggle the showReplies property of the comment object
+        comment.showReplies = !comment.showReplies;
 
-	$scope.showReplies = function(comment) {
-		if (comment.showReplies) {
-			comment.showReplies = false;
-		} else {
-			$http.get(`/rest/comments/details/${comment.id}`)
-				.then(function(resp) {
-					comment.replies = resp.data;
-					comment.showReplies = true;
-				})
-				.catch(function(error) {
-					console.error("Lỗi: ", error);
-				});
-		}
-	};
+        if (comment.showReplies) {
+            $http.get(`/rest/comments/details/${comment.id}`)
+                .then(function(resp) {
+                    comment.replies = resp.data;
+                })
+                .catch(function(error) {
+                    console.error("Lỗi: ", error);
+                });
+        }
+    };
+	
 	$scope.deleteReply = function(reply) {
 		if (reply && reply.id !== undefined && reply.id !== null) {
 			if (confirm("Bạn có chắc muốn xóa trả lời này?")) {
