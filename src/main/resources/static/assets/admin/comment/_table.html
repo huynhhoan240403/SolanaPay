@@ -30,9 +30,9 @@
 				<td>{{comment.create_Date | date:'dd/MM/yyyy'}}</td>
 				<td>{{comment.product.name}}</td>
 				<td class="text-center">
-					<button ng-click="showReplies(comment)"
-						class="btn text-center btn-info">{{comment.showReplies ?
-						'Hide' : 'Show'}}</button>
+					<button ng-click="showReplies(comment)" class="btn text-center btn-info">
+						{{comment.showReplies ? 'Hide' : 'Show'}}
+					</button>
 				</td>
 				<td>
 					<div class="btn-group btn-group-xs">
@@ -82,10 +82,12 @@
 
 			</tr>
 		</tbody>
-		<div class="navbar navbar-fixed-top">
+		
+		
+	</table>
+	<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner" ng-repeat="comment in pager.items">
-				<table class="table table-condensed table-dark detail-table"
-					ng-show="comment.showReplies">
+				<table class="table table-condensed table-dark detail-table" ng-show="comment.showReplies">
 					<thead class="bg-danger text-white">
 						<tr>
 							<th>Reply Id</th>
@@ -113,7 +115,6 @@
 				</table>
 			</div>
 		</div>
-	</table>
 	<div class="panel-footer text-center">
 		<button ng-click="pager.first()" class="btn" style="width: 60px;">
 			<i class="fa-solid fa-backward-step"></i>
