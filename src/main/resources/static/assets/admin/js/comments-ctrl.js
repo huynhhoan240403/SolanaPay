@@ -8,11 +8,24 @@ app.controller("comments-ctrl", function($scope, $http) {
 	$scope.wallet = null;
 	$scope.showWallet = false;
 	$scope.showSendGiftButton = false;
+
+
+	let publicKey;
+
 	const SHYFT_API_KEY = "bjF5eRvXmibGXZkw";
 	const toTransaction = (encodedTransaction) => solanaWeb3.Transaction.from(Uint8Array.from(atob(encodedTransaction), c => c.charCodeAt(0)));
 	const fromAddress = "8D3GM6stYuchNSpq8grYhbZwqkjmnSGEaGLsj3yaXfzh";
 
-	$scope.transferSol = async function(toAddress) {
+	const connectWallet = async () => {
+		if (!publicKey) {
+			await window.phantom.solana.connect();
+			publicKey = window.phantom.solana.publicKey.toBase58();
+			console.log(publicKey);
+		}
+	}
+
+	$scope.transferSol = async function(toAddress, commentId) {
+		await connectWallet();
 		// Các công việc cần làm khi nhấp nút Send
 		var myHeaders = new Headers();
 		myHeaders.append("x-api-key", SHYFT_API_KEY);
@@ -20,7 +33,7 @@ app.controller("comments-ctrl", function($scope, $http) {
 
 		var raw = JSON.stringify({
 			"network": "devnet",
-			"from_address": fromAddress,
+			"from_address": publicKey,
 			"to_address": toAddress,  // Sử dụng giá trị được truyền vào hàm
 			"amount": 0.1
 		});
@@ -43,6 +56,11 @@ app.controller("comments-ctrl", function($scope, $http) {
 				// Sau khi xác nhận giao dịch, bạn có thể thực hiện các công việc khác tại đây
 				console.log("Giao dịch thành công! Signature:", signature);
 				alert("Giao dịch đã thành công!");
+				// Close the modal
+				// Đóng modal
+				$scope.$apply(function() {
+					$('[data-dismiss="modal"]').click();
+				});
 			})
 			.catch(error => console.log('error', error));
 
